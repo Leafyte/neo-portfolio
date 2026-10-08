@@ -64,7 +64,7 @@ export default function About() {
                   <GraduationCap size={17} className="chip-icon" />
                 </div>
                 <div className="chip-text">
-                  <span className="chip-title">4th Semester</span>
+                  <span className="chip-title">5th Semester</span>
                   <span className="chip-subtitle">CSE, VVCE</span>
                 </div>
               </div>
@@ -85,25 +85,25 @@ export default function About() {
                 </div>
                 <div className="chip-text">
                   <span className="chip-title">Currently Learning</span>
-                  <span className="chip-subtitle">ML on Embedded Systems</span>
+                  <span className="chip-subtitle">Java Backend Systems</span>
                 </div>
               </div>
             </div>
             {/* Social Links row */}
             <div className="about-socials">
-              <a href="https://github.com/karthikm" target="_blank" rel="noopener noreferrer"
-                 aria-label="GitHub" className="social-icon-btn">
+              <a href="https://github.com/leafyte" target="_blank" rel="noopener noreferrer"
+                aria-label="GitHub" className="social-icon-btn">
                 <GithubIcon size={17} />
               </a>
-              <a href="https://linkedin.com/in/karthikm" target="_blank" rel="noopener noreferrer"
-                 aria-label="LinkedIn" className="social-icon-btn">
+              <a href="https://linkedin.com/in/karthikm127" target="_blank" rel="noopener noreferrer"
+                aria-label="LinkedIn" className="social-icon-btn">
                 <LinkedinIcon size={17} />
               </a>
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
-                 aria-label="X / Twitter" className="social-icon-btn">
+                aria-label="X / Twitter" className="social-icon-btn">
                 <XIcon size={15} />
               </a>
-              <a href="mailto:karthik@example.com" aria-label="Email" className="social-icon-btn">
+              <a href="karthikm12790@gmail.com" aria-label="Email" className="social-icon-btn">
                 <Mail size={17} />
               </a>
             </div>
