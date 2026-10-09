@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { ArrowRight, MapPin, GraduationCap, Briefcase, Mail } from 'lucide-react';
+import { ArrowRight, MapPin, GraduationCap, Briefcase, Mail, FileText } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, XIcon } from '@/components/Icons';
 
 export default function About() {
@@ -103,8 +103,17 @@ export default function About() {
                 aria-label="X / Twitter" className="social-icon-btn">
                 <XIcon size={15} />
               </a>
-              <a href="karthikm12790@gmail.com" aria-label="Email" className="social-icon-btn">
+              <a href="mailto:karthikm12790@gmail.com" aria-label="Email" className="social-icon-btn">
                 <Mail size={17} />
+              </a>
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Resume (PDF)"
+                className="about-resume-btn"
+              >
+                <FileText size={15} /> Resume
               </a>
             </div>
           </div>

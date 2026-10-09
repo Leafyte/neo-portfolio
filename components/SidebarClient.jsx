@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import ThemeSoundControls from '@/components/ThemeSoundControls';
+import { TrainFront } from 'lucide-react';
 import {
   Home, User, Folder, GraduationCap, FileText,
   Code2, PenSquare, Trophy, Mail,
@@ -156,6 +157,16 @@ export default function SidebarClient() {
             className="spring-wire-path"
           />
         </svg>
+      )}
+
+      {pillYs.length > 0 && (
+        <span
+          className="scroll-train"
+          style={{ top: `${pillYs[Math.min(activeIdx, pillYs.length - 1)]}px` }}
+          aria-hidden="true"
+        >
+          <TrainFront size={17} strokeWidth={2.8} />
+        </span>
       )}
 
       {/* ── Nav pills — in normal flex flow, space-between ── */}

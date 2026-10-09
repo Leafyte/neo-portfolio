@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Mail, ArrowRight, Copy, Check } from 'lucide-react';
+import { Mail, ArrowRight, Copy, Check, FileText } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '@/components/Icons';
 
 const EMAIL = 'karthikm@example.com';
@@ -70,7 +70,7 @@ export default function Contact() {
 
           <div className="contact-actions-col">
             <a
-              href="https://github.com/karthikm"
+              href="https://github.com/leafyte"
               target="_blank"
               rel="noopener noreferrer"
               className="contact-action-btn"
@@ -78,12 +78,20 @@ export default function Contact() {
               <GithubIcon size={16} /> View GitHub <ArrowRight size={14} />
             </a>
             <a
-              href="https://linkedin.com/in/karthikm"
+              href="https://linkedin.com/in/karthikm127"
               target="_blank"
               rel="noopener noreferrer"
               className="contact-action-btn"
             >
               <LinkedinIcon size={16} /> Connect on LinkedIn <ArrowRight size={14} />
+            </a>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-action-btn"
+            >
+              <FileText size={16} /> View Resume <ArrowRight size={14} />
             </a>
           </div>
         </div>

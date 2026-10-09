@@ -164,6 +164,29 @@ button {
   /* No overflow:hidden — it breaks sticky and clips scaled pills */
 }
 
+/* Locomotive follows the currently active stop on the vertical route. */
+.scroll-train {
+  position: absolute;
+  left: 5px;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  color: #000;
+  background: var(--accent-yellow);
+  border: 2px solid var(--ink);
+  border-radius: 9px;
+  box-shadow: 2px 2px 0 var(--ink);
+  pointer-events: none;
+  transform: translateY(-50%) rotate(90deg);
+  transition: top 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-train { transition: none; }
+}
+
 /* Wire SVG — behind everything, fills full sidebar height */
 .spring-wire-svg {
   position: absolute;
@@ -647,6 +670,36 @@ button {
   gap: 10px;
   align-items: center;
   margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+.about-resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: var(--border-thin);
+  background: var(--accent-yellow);
+  color: #000000;
+  box-shadow: 2px 2px 0 var(--ink);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  text-decoration: none;
+}
+
+.about-resume-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--ink);
+  background: #FFE270;
+}
+
+.about-resume-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--ink);
 }
 
 /* =========================================================
@@ -1864,4 +1917,3 @@ button {
     flex-direction: column;
   }
 }
-
