@@ -22,8 +22,8 @@ export default function Hero() {
 
             <div className="hero-actions">
               <a
-                href="/resume.pdf"
-                download
+                href="/main_resume.pdf"
+                download="Karthik_Resume.pdf"
                 className="hero-btn hero-btn-primary"
                 id="hero-download-resume"
               >

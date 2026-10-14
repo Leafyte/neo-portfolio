@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { ArrowRight, MapPin, GraduationCap, Briefcase, Mail, FileText } from 'lucide-react';
-import { GithubIcon, LinkedinIcon, XIcon } from '@/components/Icons';
+import { GithubIcon, LinkedinIcon, XIcon, LeetcodeIcon } from '@/components/Icons';
 
 export default function About() {
   return (
@@ -99,15 +99,19 @@ export default function About() {
                 aria-label="LinkedIn" className="social-icon-btn">
                 <LinkedinIcon size={17} />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
+              <a href="https://twitter.com/leafyte" target="_blank" rel="noopener noreferrer"
                 aria-label="X / Twitter" className="social-icon-btn">
                 <XIcon size={15} />
+              </a>
+              <a href="https://leetcode.com/u/Karthik12790/" target="_blank" rel="noopener noreferrer"
+                aria-label="LeetCode" className="social-icon-btn">
+                <LeetcodeIcon size={17} />
               </a>
               <a href="mailto:karthikm12790@gmail.com" aria-label="Email" className="social-icon-btn">
                 <Mail size={17} />
               </a>
               <a
-                href="/resume.pdf"
+                href="/main_resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Resume (PDF)"

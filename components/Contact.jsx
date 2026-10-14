@@ -86,7 +86,7 @@ export default function Contact() {
               <LinkedinIcon size={16} /> Connect on LinkedIn <ArrowRight size={14} />
             </a>
             <a
-              href="/resume.pdf"
+              href="/main_resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="contact-action-btn"
