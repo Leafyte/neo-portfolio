@@ -2,11 +2,20 @@ import './globals.css';
 import SidebarClient from '@/components/SidebarClient';
 import MobileNav from '@/components/MobileNav';
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
+
 export const metadata = {
   title: 'Karthik M — Computer Science Engineer · Builder · Learner',
   description:
     'Portfolio of Karthik M. Computer Science Engineer passionate about building technology in AI/ML, FinTech, and edge devices.',
-  viewport: 'width=device-width, initial-scale=1',
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({ children }) {
