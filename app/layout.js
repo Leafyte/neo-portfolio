@@ -12,9 +12,12 @@ export const metadata = {
   description:
     'Portfolio of Karthik M. Computer Science Engineer passionate about building technology in AI/ML, FinTech, and edge devices.',
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png',    type: 'image/png', sizes: '256x256' },
+    ],
     shortcut: '/favicon.ico',
-    apple: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
   },
 };
 
