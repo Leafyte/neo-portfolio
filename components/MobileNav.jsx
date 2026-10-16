@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {
   Home, User, Folder, GraduationCap, FileText,
   Code2, PenSquare, Trophy, Mail,
@@ -20,6 +20,7 @@ const NAV_ITEMS = [
 
 export default function MobileNav() {
   const [activeIdx, setActiveIdx] = useState(0);
+  const itemRefs = useRef([]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,6 +41,16 @@ export default function MobileNav() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (itemRefs.current[activeIdx]) {
+      itemRefs.current[activeIdx].scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center',
+      });
+    }
+  }, [activeIdx]);
+
   return (
     <nav className="mobile-bottom-nav" aria-label="Mobile navigation">
       <div className="mobile-nav-scroll">
@@ -49,12 +60,13 @@ export default function MobileNav() {
             <a
               key={id}
               href={`#${id}`}
+              ref={(el) => { itemRefs.current[idx] = el; }}
               className={`mobile-nav-item${isActive ? ' is-active' : ''}`}
               aria-current={isActive ? 'page' : undefined}
               aria-label={label}
             >
               <span className="mobile-nav-icon-wrap">
-                <Icon size={20} strokeWidth={2.2} />
+                <Icon size={19} strokeWidth={2.2} />
               </span>
               <span className="mobile-nav-label">{label}</span>
             </a>

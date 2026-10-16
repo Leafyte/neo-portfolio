@@ -1704,17 +1704,38 @@ button {
    ========================================================= */
 @media (max-width: 768px) {
 
-  /* ── Body: make room for fixed bottom nav ── */
-  body {
-    padding-bottom: 72px;
+  /* ── Prevent ANY horizontal blowout on mobile viewports ── */
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw;
+    width: 100%;
   }
 
-  /* ── Shell: single column, no sidebar gap ── */
+  /* ── Body: make room for fixed bottom nav + safe area ── */
+  body {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* ── Shell: full width, stretch children, no overflow ── */
   .portfolio-app-shell {
     flex-direction: column;
-    padding: 16px 14px 24px;
-    gap: 20px;
+    align-items: stretch !important;
+    width: 100%;
     max-width: 100%;
+    padding: 16px 14px 28px;
+    gap: 20px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .portfolio-main-content {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0 !important;
+    overflow-x: hidden;
+    padding-top: 0;
+    gap: 24px;
+    box-sizing: border-box;
   }
 
   /* ── Sidebar: completely hidden on mobile ── */
@@ -1722,30 +1743,37 @@ button {
     display: none !important;
   }
 
-  /* ── Bottom nav: shown on mobile ── */
+  /* ── Bottom nav: fixed with safe area ── */
   .mobile-bottom-nav {
     display: block;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
+    width: 100%;
+    max-width: 100vw;
     z-index: 100;
     background-color: var(--bg-canvas);
     border-top: 3px solid var(--ink);
     box-shadow: 0 -4px 0 var(--ink);
-    height: 68px;
+    height: calc(64px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    box-sizing: border-box;
   }
 
   .mobile-nav-scroll {
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 100%;
+    height: 64px;
+    width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
     scrollbar-width: none;
-    gap: 2px;
+    -webkit-overflow-scrolling: touch;
+    gap: 4px;
     padding: 0 8px;
+    box-sizing: border-box;
   }
 
   .mobile-nav-scroll::-webkit-scrollbar {
@@ -1757,19 +1785,18 @@ button {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 3px;
+    gap: 2px;
     flex-shrink: 0;
-    min-width: 60px;
-    padding: 6px 10px;
+    min-width: 54px;
+    padding: 5px 6px;
     border-radius: 10px;
     text-decoration: none;
     color: var(--text-secondary);
+    min-height: 48px;
     transition:
       background-color 0.2s ease,
       transform        0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
       color            0.15s ease;
-    /* Touch target */
-    min-height: 52px;
   }
 
   .mobile-nav-item:active {
@@ -1781,50 +1808,63 @@ button {
     color: #000000;
     border: 2px solid var(--ink);
     box-shadow: 2px 2px 0 var(--ink);
-    transform: translateY(-4px) scale(1.06);
+    transform: translateY(-2px) scale(1.04);
   }
 
   .mobile-nav-icon-wrap {
     display: grid;
     place-items: center;
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
   }
 
   .mobile-nav-label {
     font-family: var(--font-display);
-    font-size: 9.5px;
+    font-size: 9px;
     font-weight: 700;
     white-space: nowrap;
   }
 
   /* ── Typography scale-down ── */
   .hero-title {
-    font-size: clamp(36px, 10vw, 56px) !important;
+    font-size: clamp(32px, 9vw, 46px) !important;
+    line-height: 1.1;
   }
 
   .hero-tagline {
-    font-size: 14px !important;
+    font-size: 13.5px !important;
+    line-height: 1.4;
   }
 
   .hero-description {
     font-size: 13px !important;
+    line-height: 1.5;
   }
 
   .section-title {
-    font-size: 20px !important;
+    font-size: 19px !important;
   }
 
   .hero-card {
-    min-height: 260px !important;
+    min-height: auto !important;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   /* ── Hero: stack vertically ── */
   .hero-content {
     flex-direction: column;
     align-items: flex-start;
-    padding: 24px 20px;
+    padding: 22px 18px !important;
     gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .hero-text-block {
+    width: 100%;
+    max-width: 100%;
   }
 
   .hero-actions {
@@ -1839,14 +1879,21 @@ button {
   }
 
   .hero-quote-block {
-    margin-top: 0;
+    margin-top: 4px;
     text-align: left;
+    width: 100%;
   }
 
-  /* ── About: stack portrait + text ── */
+  .hero-quote-text {
+    font-size: 13.5px;
+    line-height: 1.4;
+  }
+
+  /* ── About: stack portrait + narrative ── */
   .about-card {
-    padding: 16px !important;
+    padding: 18px 16px !important;
     width: 100%;
+    max-width: 100%;
     overflow: hidden;
     box-sizing: border-box;
   }
@@ -1872,71 +1919,273 @@ button {
 
   .about-content {
     width: 100%;
+    max-width: 100%;
     overflow: hidden;
     min-width: 0;
   }
 
+  .about-paragraph {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
   .about-chips-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .about-chip {
+    padding: 8px 10px;
+    min-width: 0;
+    gap: 8px;
+  }
+
+  .chip-title {
+    font-size: 11.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .chip-subtitle {
+    font-size: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .about-socials {
+    margin-top: 14px;
+    flex-wrap: wrap;
+    gap: 8px;
     width: 100%;
   }
 
-  /* ── All grids → single column ── */
-  .projects-grid {
-    grid-template-columns: 1fr;
+  /* ── Activity / Contribution Graph ── */
+  .interactive-activity-section {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
   }
 
-  .dual-column-grid {
-    grid-template-columns: 1fr;
+  .neo-contribution-card {
+    padding: 16px 14px !important;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
   }
 
+  .neo-contrib-head {
+    margin-bottom: 12px;
+  }
+
+  .neo-contrib-number {
+    font-size: 32px !important;
+  }
+
+  .neo-contrib-label {
+    font-size: 11px !important;
+  }
+
+  .neo-contrib-period {
+    font-size: 10px !important;
+  }
+
+  .neo-contrib-plot-wrap {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+  }
+
+  .neo-contrib-foot {
+    font-size: 11px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .neo-ask-card {
+    padding: 16px 14px !important;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .neo-ask-form {
+    padding: 6px 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .neo-ask-input {
+    font-size: 13px;
+    min-width: 0;
+  }
+
+  .neo-ask-chips {
+    gap: 6px;
+  }
+
+  .neo-ask-chip {
+    font-size: 11.5px;
+    padding: 5px 10px;
+  }
+
+  /* ── Skills & Quote Banner ── */
+  .skills-container {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    gap: 12px;
+  }
+
+  .skills-pills-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .skill-pill {
+    font-size: 12px;
+    padding: 5px 11px;
+    white-space: nowrap;
+  }
+
+  .quote-banner {
+    transform: none !important;
+    margin-top: 10px;
+    padding: 14px 16px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .quote-text {
+    font-size: 13.5px;
+    line-height: 1.45;
+    display: block;
+    word-break: break-word;
+  }
+
+  .quote-author {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+  }
+
+  /* ── All grids → single column, full width ── */
+  .projects-grid,
+  .dual-column-grid,
   .blog-posts-grid,
   .achievements-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    width: 100%;
+    max-width: 100%;
+    gap: 16px;
   }
 
   .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr !important;
   }
 
+  .project-card,
+  .blog-post-card,
+  .achievement-card,
+  .info-card,
+  .contact-card,
+  .neo-card {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 16px !important;
+    box-shadow: 3px 3px 0 var(--ink) !important;
+  }
+
+  .project-body {
+    padding: 14px !important;
+  }
+
+  .project-title {
+    font-size: 16px;
+    word-break: break-word;
+  }
+
+  .blog-post-title {
+    font-size: 15px;
+    word-break: break-word;
+  }
+
+  .blog-post-desc {
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+
+  /* ── Contact section ── */
   .contact-content-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 
-  /* ── Cards: full width, lighter shadow on mobile ── */
-  .project-card,
-  .about-card,
-  .neo-card,
-  .experience-card,
-  .research-card,
-  .blog-card,
-  .achievement-card,
-  .contact-card {
-    box-shadow: 3px 3px 0 var(--ink) !important;
+  .contact-heading {
+    font-size: 16px;
+    line-height: 1.35;
+  }
+
+  .contact-subtext {
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+
+  .contact-email-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .contact-email-link {
+    justify-content: center;
+    font-size: 12.5px;
+    word-break: break-all;
+  }
+
+  .contact-copy-btn {
+    justify-content: center;
+  }
+
+  .contact-actions-col {
+    gap: 8px;
+    width: 100%;
+  }
+
+  .contact-action-btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 13px;
   }
 
   /* ── Section spacing ── */
   .content-section {
-    scroll-margin-top: 16px;
+    scroll-margin-top: 14px;
+    width: 100%;
+    max-width: 100%;
   }
 
-  .portfolio-main-content {
-    gap: 24px;
-  }
-
-  /* ── Section header ── */
   .section-header {
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
 
-  /* ── Interactive activity: stack ── */
-  .neo-activity-grid {
-    grid-template-columns: 1fr !important;
-    gap: 16px;
-  }
-
-  /* ── Contact form ── */
-  .contact-form-row {
-    flex-direction: column;
+  .section-link {
+    font-size: 11.5px;
+    padding: 4px 8px;
   }
 }

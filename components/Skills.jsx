@@ -2,7 +2,7 @@
 
 import { Zap, ArrowRight } from 'lucide-react';
 
-const SKILLS_ROW_1 = [
+const SKILLS = [
   { name: 'Java', variant: 'blue' },
   { name: 'Python', variant: 'blue' },
   { name: 'C', variant: 'blue' },
@@ -12,9 +12,6 @@ const SKILLS_ROW_1 = [
   { name: 'Node.js', variant: 'green' },
   { name: 'Spring Boot', variant: 'blue' },
   { name: 'Flask', variant: 'blue' },
-];
-
-const SKILLS_ROW_2 = [
   { name: 'Machine Learning', variant: 'blue' },
   { name: 'Computer Vision', variant: 'blue' },
   { name: 'Raspberry Pi', variant: 'blue' },
@@ -40,18 +37,9 @@ export default function Skills() {
       </div>
 
       <div className="skills-container">
-        {/* Skills pills row 1 */}
+        {/* Skills pills */}
         <div className="skills-pills-row">
-          {SKILLS_ROW_1.map((skill, idx) => (
-            <span key={idx} className={`skill-pill skill-pill-${skill.variant}`}>
-              {skill.name}
-            </span>
-          ))}
-        </div>
-
-        {/* Skills pills row 2 */}
-        <div className="skills-pills-row">
-          {SKILLS_ROW_2.map((skill, idx) => (
+          {SKILLS.map((skill, idx) => (
             <span key={idx} className={`skill-pill skill-pill-${skill.variant}`}>
               {skill.name}
             </span>
